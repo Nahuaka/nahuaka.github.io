@@ -1,0 +1,75 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/random-table.css">
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/anime-list.css">
+  <link rel="stylesheet" href="css/bingo.css">
+
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid header-nav-bar">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Anilistmod</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li id="search-btn" class="btn-ctrl"><a href="index.html">Search</a></li>
+        <li id= "random-btn" class="btn-ctrl"><a href="VoiceActor.html">Voice actor</a></li>
+        <li id= "bingo-btn" class="btn-ctrl active-tab"><a href="bingo.html">Bingo</a></li>
+        <li class="btn-ctrl"><a href="challenge.html">My Challenge</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row align-self-center">
+    <div id="search-row-display" class="col-sm-12 col-md-10 col-lg-11 col-xl-11  col-centered random-row-displayed" style="background-color: transparent;">
+      <div class="row align-self-center">
+        <div class="col-sm-6 col-md-5 col-lg-4 col-xl-2">
+          <label for="challenge">Challenge:</label>
+          <input id="challenge" class="input-look" type="text" placeholder="https://anilist.co/">
+        </div>
+        <button id="button-search-bingo">Search</button>
+      </div>
+      <div class="row" id="preview-challenge">
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/bingo.js"></script>
+</body>
+</html>

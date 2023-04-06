@@ -1,0 +1,108 @@
+@font-face { font-family: AmsterdamOne; src: url('../font/Amsterdam.ttf');}
+@font-face { font-family: BloggerSans; src: url('../font/BloggerSans.otf');}
+@font-face { font-family: BloggerSansLight; src: url('../font/BloggerSans-Light.otf');}
+@font-face { font-family: BloggerSansMedium; src: url('../font/BloggerSans-Medium.otf');}
+
+@media screen and (min-width: 1300px) {
+
+  .anime-random-cover {
+    width: 30%;
+    margin: 2% 1em;
+    align-self: flex-start;
+    float: left;
+    border-radius: 1em;
+  }
+}
+
+@media screen and (max-width: 1299px) {
+
+  .anime-random-cover {
+    width: 30%;
+    align-self: flex-start;
+    float: left;
+    border-radius: 1em;
+    margin: 1em;
+  }
+}
+
+#inside-div {
+  background-color: red;
+  padding: 1em;
+}
+
+.anime-title-random {
+  color: #E7E0FA;
+  text-shadow:
+    0 0 7px #613DC1,
+    0 0 10px #9000ff,
+    0 0 21px #6000ff,
+    0 0 42px #c000ff,
+    0 0 82px #9C80E5,
+    0 0 92px #C1ADF5,
+    0 0 102px #C1ADF5,
+    0 0 151px #0fa;
+  padding-top: 0.1em;
+  padding-bottom: 0;
+  /*color: #613DC1;*/
+  text-align: center;
+  font-size: 2.3em;
+  font-family: AmsterdamOne, serif;
+}
+
+.description {
+  text-align: justify;
+  padding-left: 1em;
+  padding-right: 1em;
+  padding-top: 1.4em;
+  font-family: BloggerSansLight, serif;
+}
+
+/* TABLE */
+
+.information-table {
+  border: 1px solid lightgray;
+  width: 50%;
+  margin: auto;
+  font-size: 0.9em;
+}
+
+.info-row {
+  border: 1px solid lightgray;
+}
+
+.right {
+  text-align: right;
+}
+
+.info-cell {
+  padding: 0.3em 2em;
+}
+
+caption {
+  font-size: 1.2em;
+  background-color: rgb(31, 37, 44);
+  color: white;
+  padding: 0.7em 0.3em;
+  margin-top: 1em;
+  text-align: center;
+}
+
+.legend-cell {
+  font-family: BloggerSansMedium, serif;
+}
+
+.tag-card-table {
+  display: inline-flex;
+  margin: 0.3em 0.3em 0.3em 0.3em;
+  padding: 0.5em 0.5em;
+  border-radius: 0.5em;
+  background-color: #6000ff;
+  color: white;
+  cursor: pointer;
+  text-align: right;
+  float: right;
+}
+
+.tag-card-table:hover {
+  background-color: #9000ff;
+}

@@ -1,0 +1,115 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/random-table.css">
+  <link rel="stylesheet" href="css/anime-list.css">
+
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+<body><nav class="navbar navbar-inverse">
+  <div class="container-fluid header-nav-bar">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Anilistmod</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li id="search-btn" class="btn-ctrl"><a href="index.html">Search</a></li>
+        <li id= "random-btn" class="btn-ctrl active-tab"><a href="random.html">Random</a></li>
+        <li id= "bingo-btn" class="btn-ctrl"><a href="bingo.html">Bingo</a></li>
+        <li class="btn-ctrl"><a href="challenge.html">My Challenge</a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-sm-11 col-centered middle-container-bg">
+      <div id="random-tab" class="row random-row" style="display: none;">
+        <h1>Find a random anime to watch</h1>
+        <form id="random-form">
+          <div class="col-sm-12">
+            <label for="username">Username:</label>
+            <input id="username" type="text" class="form-control" placeholder="Alie" value="Alie">
+            <label for="nb-max-episodes">Maximum number of episodes</label>
+            <input class="form-control" type="number" id="nb-max-episodes" name="nb-max-episodes" min="1" max="1500" step="1" value="24">
+          </div>
+          <div class="col-sm-12">
+            <div class="form-row">
+              <div class="col-xs-6">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <label for="genre-selector">Genre</label>
+                    <div class="multi-selector">
+                      <div id="genre-selector-toggle" class="select-field select-look">
+                        <input type="text" id="genre-selector" class="input-selector" placeholder="Any"></input>
+                        <span class="down-arrow down-arrow-look">&blacktriangledown;</span>
+                      </div>
+                      <div id="list" class="list-look"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-11">
+                    <div id="genre-tag"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-xs-6">
+                <div class="row">
+                  <div class="col-xs-12">
+                    <label for="format-selector">Format</label>
+                    <div class="multi-selector">
+                      <div id="format-selector-toggle" class="select-field-format select-look">
+                        <input type="text" id="format-selector" class="input-selector" placeholder="Any"></input>
+                        <span class="down-arrow-format down-arrow-look">&blacktriangledown;</span>
+                      </div>
+                      <div id="listFormat" class="list-look"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-11">
+                    <div id="format-tag"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-sm-12 btn-center">
+            <button class="btn-submit btn" type="submit">Random</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="js/card.js"></script>
+<script src="js/random.js"></script>
+</body>
+</html>

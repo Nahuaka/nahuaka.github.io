@@ -1,0 +1,29 @@
+@font-face { font-family: AmsterdamOne; src: url('../font/Amsterdam.ttf');}
+@font-face { font-family: BloggerSans; src: url('../font/BloggerSans.otf');}
+@font-face { font-family: BloggerSansLight; src: url('../font/BloggerSans-Light.otf');}
+@font-face { font-family: BloggerSansMedium; src: url('../font/BloggerSans-Medium.otf');}
+
+p, td, tr, caption, button {
+  font-family: BloggerSans, serif;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+input {
+  font-family: BloggerSansLight, serif;
+}
+
+
+label {
+  padding-top: 0.8em;
+  padding-bottom: 0;
+  font-family: BloggerSansMedium, serif;
+  font-size: 1.1em;
+  font-weight: normal;
+  color: lightgrey;
+}
+
+h1 {
+  font-family: AmsterdamOne, serif;
+  color: #202A25;
+}

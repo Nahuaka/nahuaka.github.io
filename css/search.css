@@ -1,0 +1,184 @@
+h1 {
+  font-size: 1.7em;
+  margin-left: 0.7em;
+  padding-top: 0.8em;
+}
+
+.btn-submit {
+  margin: 1em auto;
+  background-color: #6C00BF;
+  color: white;
+  padding: 0.7em 6em;
+  text-align: center;
+}
+
+.btn-submit:hover {
+  background-color: #9000FF;
+  color: white;
+}
+
+.btn-submit:active {
+  color: white;
+}
+
+input[type='checkbox'] {
+  accent-color: #9000ff;
+}
+
+.padding-check {
+  font-family: BloggerSansLight, serif;
+  margin-left: 2em;
+  float: left;
+  margin-right: 2em;
+}
+
+legend {
+  font-size: 1.3em;
+}
+
+input{
+  outline: none;
+  border: none;
+
+}
+
+.select-look{
+  border-radius: 0.5em;
+  padding: 0.5em 0.7em;
+  color: darkgrey;
+  background-color: rgb(23, 31, 45);
+}
+
+.input-selector {
+  display: inline-block;
+  background-color: rgb(23, 31, 45);
+  width: 80%;
+}
+
+.task,.list-look{
+  background-color: rgb(23, 31, 45);
+  padding: 0.1em 0.4em 0.1em 0.4em;
+  font-family: BloggerSansLight, serif;
+}
+
+.task-grp {
+  background-color: rgb(23, 31, 45);
+  padding: 0.1em 0.4em;
+  margin: 0 0.5em;
+  display: block;
+  font-family: BloggerSansLight, serif;
+}
+
+.task-grp:hover{
+  background-color: #223044;
+}
+
+.group-title {
+  color: gray;
+  font-family: BloggerSans, serif;
+  font-size: 1.1em;
+}
+
+.list-look{
+  box-shadow: 0 30px 60px rgb(0,0,0,0.2);
+  background-color: rgb(23, 31, 45);
+  display: none;
+  margin-top: 0.5em;
+  border-radius: 0.5em;
+  z-index: 15;
+  position: absolute;
+  width: 75%;
+  padding: 1em 0.6em 0.5em 0.6em;
+}
+
+.down-arrow-look{
+  font-size: 1.2rem;
+  display: inline-block;
+  cursor: pointer;
+  float: right;
+  transition: 0.2s linear;
+  padding-top: 0.2em;
+}
+
+.task{
+  display: block;
+  padding-left: 0;
+  font-size: 0.9em;
+}
+
+.task:hover{
+  background-color: #223044;
+}
+.show{
+  display: block;
+}
+.rotate180{
+  transform: rotate(-60deg);
+}
+
+.tag-card {
+  font-family: BloggerSans, serif;
+  display: inline-flex;
+  margin: 0.3em 0.3em 0.3em 0.3em;
+  padding: 0.3em 0.5em 0.3em 0.5em;
+  border-radius: 0.5em;
+  background-color: #6000ff;
+  color: white;
+  cursor: pointer;
+  font-size: 0.9em;
+}
+
+.tag-card:hover {
+  background-color: #223044;
+}
+
+.selected-genre {
+  background-color: #223044;
+}
+
+.right-element {
+  float: right;
+}
+
+.hide {
+  display: none;
+}
+
+.checkbox-form {
+  border: 1px solid red;
+  margin-bottom: 5em;
+}
+
+.overflow-card-content {
+  background-color: blue;
+}
+
+@media only screen and (min-width: 1200px) {
+  .date-style {
+    border-radius: 0.5em;
+    padding: 0.7em 0.6em;
+    font-size: 1em;
+    background-color: rgb(23, 31, 45);
+    color: darkgrey;
+    width: 112%
+  }
+}
+
+@media only screen and (max-width: 1199px) {
+  .date-style {
+    border-radius: 0.5em;
+    padding: 0.7em 0.6em;
+    font-size: 1em;
+    background-color: rgb(23, 31, 45);
+    color: darkgrey;
+    width: 100%
+  }
+}
+
+.input-look {
+  background-color: rgb(23, 31, 45);
+  border-radius: 0.5em;
+  padding: 0.7em 0.7em;
+  color: darkgrey;
+  width: 100%;
+}

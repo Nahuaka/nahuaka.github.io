@@ -1,0 +1,46 @@
+#button-search-bingo {
+    background-color: #171f2d;
+    color: lightgray;
+    border-radius: 0.5em;
+    border: 0;
+    padding: 0.6em 4em;
+    margin-top: 2.8em;
+}
+
+#button-search-bingo:active {
+    background-color: #26364d;
+}
+
+#button-search-bingo:hover {
+    background-color: #223044;
+}
+
+.comment-look {
+    font-size: 0.8em;
+    display: inline-block;
+    background-color: #171f2d;
+    color: lightgray;
+    border: 0;
+    padding: 2em;
+    margin: 2em;
+    border-radius: 0.3em;
+    vertical-align: top;
+    text-align: left;
+}
+
+.sub-comment-look {
+    font-size: 0.8em;
+    display: inline-block;
+    background-color: #151b28;
+    color: lightgray;
+    border: 0;
+    border-radius: 0.3em;
+    padding: 2em;
+    vertical-align: top;
+    margin: 2em;
+    text-align: left;
+}
+
+#preview-challenge {
+    text-align: center;
+}

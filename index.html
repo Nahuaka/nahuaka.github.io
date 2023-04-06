@@ -1,0 +1,231 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:title" content="">
+  <meta property="og:type" content="">
+  <meta property="og:url" content="">
+  <meta property="og:image" content="">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+  <link rel="apple-touch-icon" href="icon.png">
+  <!-- Place favicon.ico in the root directory -->
+
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/general.css">
+  <link rel="stylesheet" href="css/random-table.css">
+  <link rel="stylesheet" href="css/search.css">
+  <link rel="stylesheet" href="css/anime-list.css">
+
+
+  <meta name="theme-color" content="#fafafa">
+</head>
+
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid header-nav-bar">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Anilistmod</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li id="search-btn" class="btn-ctrl active-tab"><a href="index.html">Search</a></li>
+        <li id= "random-btn" class="btn-ctrl"><a href="VoiceActor.html">Voice actor</a></li>
+        <li id= "bingo-btn" class="btn-ctrl"><a href="bingo.html">Bingo</a></li>
+        <li class="btn-ctrl"><a href="challenge.html">My Challenge</a></li>
+      </ul>
+      <p class="label-switch" id="anime-manga-label" style="float:right">Anime</p>
+      <div class="row justify-content-start" style="float:right">
+        <label class="switch" id="switch-type">
+          <input type="checkbox" id="checked-slider">
+          <span class="slider round"></span>
+        </label>
+      </div>
+    </div>
+  </div>
+</nav>
+<div class="container-fluid">
+  <div class="row">
+    <div id="search-row-display" class="col-sm-12 col-md-10 col-lg-11 col-xl-11  col-centered random-row-displayed" style="background-color: transparent;">
+      <div></div>
+      <div id="search-tab" class="row random-row">
+        <div class="col-sm-12">
+          <form id="search-form">
+            <div class="row justify-content-start">
+              <div class="col-sm-2 col-md-3 col-lg-1 col-xl-2">
+                <label for="user-name">Username:</label>
+                <input id="user-name" class="input-look" type="text" placeholder="Alie" value="Alie">
+              </div>
+              <div class="col-sm-3 col-md-3 col-lg-1 col-xl-2">
+                <label for="state-selector">State:</label>
+                <div class="row">
+                  <div class="col-sm-12">
+                    <div class="multi-selector">
+                      <div id="state-selector-toggle" class="select-field-state select-look">
+                        <input type="text" id="state-selector" class="input-selector" placeholder="Any">
+                        <span class="down-arrow-state down-arrow-look">&blacktriangledown;</span>
+                      </div>
+                      <div id="listState" class="list-look"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-11">
+                    <div id="state-tag"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3 col-md-3 col-lg-1 col-xl-2">
+                <label for="started-date">Started:</label>
+                <input class="date-style" type="date" id="started-date" name="started-date">
+              </div>
+              <div class="col-sm-3 col-md-3 col-lg-1 col-xl-2">
+                <label for="finished-date">Finished:</label>
+                <input class="date-style" type="date" id="finished-date" name="finished-date">
+              </div>
+              <div class="col-sm-3 col-md-3 col-lg-1 col-xl-2">
+                <label for="genre-selector">Genre:</label>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="multi-selector">
+                      <div id="genre-selector-toggle" class="select-field select-look">
+                        <input type="text" id="genre-selector" class="input-selector" placeholder="Any">
+                        <span class="down-arrow down-arrow-look">&blacktriangledown;</span>
+                      </div>
+                      <div id="list" class="list-look"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-11">
+                    <div id="genre-tag"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3 col-md-3 col-lg-1 col-xl-2">
+                <label for="format-selector">Format:</label>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="multi-selector">
+                      <div id="format-selector-toggle" class="select-field-format select-look">
+                        <input type="text" id="format-selector" class="input-selector" placeholder="Any"></input>
+                        <span class="down-arrow-format down-arrow-look">&blacktriangledown;</span>
+                      </div>
+                      <div id="listFormat" class="list-look"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-11">
+                    <div id="format-tag"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                <label for="tag-selector">Tag:</label>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="multi-selector">
+                      <div id="tag-selector-toggle" class="select-field-tag select-look">
+                        <input type="text" id="tag-selector" class="input-selector" placeholder="Any"></input>
+                        <span class="down-arrow-tag down-arrow-look">&blacktriangledown;</span>
+                      </div>
+                      <div id="tag-list" class="list-look"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-11">
+                    <div id="tags-genre"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3 col-md-3 col-lg-1 col-xl-2">
+                <label for="year-selector">Year:</label>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="multi-selector">
+                      <div id="year-selector-toggle" class="select-field-year select-look">
+                        <input type="text" id="year-selector" class="input-selector" placeholder="Any"></input>
+                        <span class="down-arrow-year down-arrow-look">&blacktriangledown;</span>
+                      </div>
+                      <div id="listYear" class="list-look"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-11">
+                    <div id="year-tag"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-3 col-md-3 col-lg-1 col-xl-2" id="season-div">
+                <label for="season-selector">Season:</label>
+                <div class="row">
+                  <div class="col-xs-12">
+                    <div class="multi-selector">
+                      <div id="season-selector-toggle" class="select-field-season select-look">
+                        <input type="text" id="season-selector" class="input-selector" placeholder="Any"></input>
+                        <span class="down-arrow-season down-arrow-look">&blacktriangledown;</span>
+                      </div>
+                      <div id="listSeason" class="list-look"></div>
+                    </div>
+                  </div>
+                  <div class="col-xs-11">
+                    <div id="season-tag"></div>
+                  </div>
+                </div>
+              </div>
+              <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2">
+                <label for="challenge">Challenge:</label>
+                <input id="challenge" class="input-look" type="text" placeholder="https://anilist.co/">
+              </div>
+              <div class="col-sm-4 col-md-3 col-lg-2 col-xl-2" style="float: left">
+                <label for="studio">Studio:</label>
+                <input id="studio" class="input-look" type="text" placeholder="https://anilist.co/">
+              </div>
+              <div class="col-sm-12" id="tag-list-all" style="padding-top: 1.2em;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" fill="white" class="bi bi-tag" viewBox="0 0 16 16">
+                  <path d="M6 4.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm-1 0a.5.5 0 1 0-1 0 .5.5 0 0 0 1 0z"></path>
+                  <path d="M2 1h4.586a1 1 0 0 1 .707.293l7 7a1 1 0 0 1 0 1.414l-4.586 4.586a1 1 0 0 1-1.414 0l-7-7A1 1 0 0 1 1 6.586V2a1 1 0 0 1 1-1zm0 5.586 7 7L13.586 9l-7-7H2v4.586z"></path>
+                </svg>
+              </div>
+              <div class="col-sm-12 btn-center">
+                <button class="btn-submit btn" type="submit">Go</button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <div class="duration-total">
+      <p class="duration-title">Duration: </p>
+      <p class="duration-look" id="duration-value">0</p>
+      <p>minutes</p>
+      <p class="duration-title"> | Total: </p>
+      <p class="duration-look" id="total-value">0</p>
+    </div>
+    <div class="col-sm-12">
+      <div id="preview-search" class="preview row"></div>
+    </div>
+  </div>
+</div>
+
+
+<script src="js/vendor/modernizr-2.6.2.min.js"></script>
+<script src="js/plugins.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="js/slider.js"></script>
+<script src="js/tag.js"></script>
+<script src="js/card.js"></script>
+<script src="js/main.js"></script>
+<script src="js/display.js"></script>
+<script src="js/submit.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+.small-anime-random-cover {
+    width: auto;
+    height: 18em;
+    text-align: left;
+    border-radius: 0.6em;
+    margin: 1em 1em 0.6em;
+}
+
+.anime-preview {
+    display: inline-block;
+    float: none;
+    width: min-content;
+}
+
+.preview {
+    text-align: center;
+    align-items: center;
+    float: none;
+    margin: 0 auto;
+    color: white;
+    padding: 0;
+    background-color: transparent;
+}
+
+.dot {
+    height: 1em;
+    width: 1em;
+    align-items: center;
+    margin-left: 1em;
+    margin-right: 0.7em;
+    margin-top: 0.2em;
+    float: left;
+    border-radius: 50%;
+    min-width: 6%;
+}
+
+.watching {
+    background-color: steelblue;
+}
+
+.planned {
+    background-color: darkgoldenrod;
+}
+
+.watched {
+    background-color: seagreen;
+}
+
+.rewatched {
+    background-color: rebeccapurple;
+}
+
+.paused {
+    background-color: indianred;
+}
+
+.dropped {
+    background-color: darkred;
+}
+
+.anime-name {
+    text-align: left;
+    margin-top: 0;
+    display: flex;
+    font-size: 0.9em;
+    color: lightgrey;
+}
+
+.anime-name:hover {
+    color: mediumorchid;
+    text-decoration: none;
+}
+
+.hidden-info {
+    color: lightgrey;
+    width: auto;
+    height: 18em;
+    position: absolute;
+    top: 0%;
+    text-align: left;
+    margin-right: 2em;
+    margin-top: 1em;
+    margin-left: 1em;
+    padding-left: 0.6em;
+    padding-top: 0.6em;
+    z-index: 10;
+    border-radius: 0.6em;
+    background-color: rgb(23, 31, 45);
+}
+
+.smiley-rate {
+    width: 18%;
+    text-align: right;
+}
+
+.rate, .season, .right-info {
+    display: inline-block;
+}
+
+.rate, .smiley-rate {
+    float: right;
+    padding-right: 0.7em;
+}
+
+.info-p {
+    color: lightgrey;
+    font-size: 0.8em;
+    padding-top: 0;
+    margin: 0.6em 0.1em;
+    margin-top: -0.3em;
+}
+
+.season, .smiley-rate, .rate {
+    font-size: 1.1em;
+    color: whitesmoke;
+    font-family: BloggerSansLight, serif;
+}
+
+.with-other {
+    color:lightgrey;
+    display: inline-block;
+    padding-right: 1em;
+    margin: 0;
+}
+
+hr {
+    width:90%;
+    margin: 1em 0 ;
+}
+
+.preview-link {
+    color:mediumpurple;
+    font-size: 0.8em;
+}
