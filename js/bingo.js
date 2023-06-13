@@ -1,3 +1,6 @@
+let completed = '✅';
+let finished = '❌';
+
 function format_date(number)
 {
     if (number.length <= 1)
@@ -32,8 +35,6 @@ function resume(data)
 function search_through(data, comment)
 {
     let comment_split = comment.split("\n");
-    let completed = '✅';
-    let finished = '❌';
 
     for (let i = 0; i < comment_split.length; i++) {
         if (comment_split[i].includes("Legend:")) {
@@ -42,22 +43,23 @@ function search_through(data, comment)
             completed = info[1];
             finished = info[4];
         }
-        if (comment_split[i].includes("https://anilist.co")) {
-            let info = comment_split[i].replace('(', ',').replace(')', ',').split(',').filter(item => item).filter((v) => v !== ' ');
+        if (comment_split[i].includes("Start: ")) {
+            let info = comment_split[i - 1].replaceAll('(', ',').replaceAll(')', ',').split(',').filter(item => item).filter((v) => v !== ' ');
             let url = info[info.length - 1];
             if (url[url.length - 1] === '/')
                 url = url.slice(0, -1);
-            if (url.match(/\//g) || url.length >= 6) {
+            let urlPart = url.split('/').filter(item => item).filter((v) => v !== ' ');
+            if (urlPart.length >= 5) {
                 url = url.slice(0, url.length - 1);
                 url = url.slice(0, url.lastIndexOf('/'));
             }
-            if (data.hasOwnProperty(url) && !comment_split[i - 1].includes(completed)) {
-                comment_split[i + 1] = "Start: " + data[url].start + " Finish: " + data[url].end + comment_split[i + 1].substring(36);
-                const index = comment_split[i - 1].indexOf('[') + 1;
-                comment_split[i - 1] = comment_split[i - 1].substring(0, index) + completed + comment_split[i - 1].substring(index + 1);
-            } else if (!comment_split[i - 1].includes(completed)) {
-                const index = comment_split[i - 1].indexOf('[') + 1;
-                comment_split[i - 1] = comment_split[i - 1].substring(0, index) + finished + comment_split[i - 1].substring(index + 1);
+            if (data.hasOwnProperty(url) && !comment_split[i - 2].includes(completed)) {
+                comment_split[i] = "Start: " + data[url].start + " Finish: " + data[url].end + comment_split[i].substring(36);
+                const index = comment_split[i - 2].indexOf('[') + 1;
+                comment_split[i - 2] = comment_split[i - 2].substring(0, index) + completed + comment_split[i - 2].substring(index + 1);
+            } else if (!comment_split[i - 2].includes(completed)) {
+                const index = comment_split[i - 2].indexOf('[') + 1;
+                comment_split[i - 2] = comment_split[i - 2].substring(0, index) + finished + comment_split[i - 2].substring(index + 1);
             }
         }
     }
@@ -80,6 +82,8 @@ function fetch_personal(userId, comment) {
     let type = "ANIME"
     let status = "COMPLETED"
     let my_variables = {userId, type, status};
+    completed = '✅';
+    finished = '❌';
 
     let query = startQuery + "{\n" +
         mediaStart + "{\n" +
