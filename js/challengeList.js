@@ -1,4 +1,45 @@
 const delay = ms => new Promise(res => setTimeout(res, ms));
+let categoryOpen = false;
+
+document.querySelector('.select-field').addEventListener('click', () => {
+    document.querySelector('#list').classList.toggle('show');
+    document.querySelector('.down-arrow').classList.toggle('rotate180');
+    categoryOpen = !categoryOpen;
+});
+
+let listCategory = ["Timed Limit", "Tier", "Special", "Studio", "Franchise", "Legend", "Anthologies",
+    "Classic", "Puzzle", "Genre", "Manga City", "Completed", "Already Check"];
+
+function searchInTag(listName, selectorName) {
+    let selector = document.getElementById(selectorName);
+    let listChildren = document.getElementById(listName).children;
+    for (let i = 0; i < listChildren.length; i++) {
+        listChildren.item(i).style.display = "block";
+    }
+    if (listName === "list")
+        categoryOpen = true;
+    if (selector.value != null || selector.value.trim().length !== 0) {
+        for (let i = 0; i < listChildren.length; i++) {
+            let child = listChildren.item(i);
+            let value = child.innerHTML;
+            if (!value.toLowerCase().startsWith(selector.value.toLowerCase())) {
+                listChildren.item(i).style.display = "none";
+            }
+        }
+    }
+}
+
+window.addEventListener('click', function(e){
+    if (categoryOpen && !document.getElementById('list').contains(e.target) && !document.getElementById('category-selector-toggle').contains(e.target)) {
+        document.querySelector('#list').classList.toggle('show');
+        document.querySelector('.down-arrow').classList.toggle('rotate180');
+        categoryOpen = false;
+    }
+});
+
+addSelector("list", "category-tag", listCategory, "category-selector");
+document.getElementById("category-selector").addEventListener('input', searchInTag.bind(null, "list", "category-selector"));
+
 
 let all_challenge_id = []
 let data_challenge = {}
@@ -24,51 +65,64 @@ function which_category(id, url)
 let all_elements = new Map([]);
 let all_challenge = new Map([]);
 
-async function display_to_it(url, id, exist)
+async function display_to_it(url, id, exist, selectedCategory)
 {
     let category = which_category(id, url);
-    let elementExists = null;
-    let allChallenge = null;
-    if (all_elements.has(category) === false) {
-        elementExists = document.createElement("div");
-        elementExists.className = "col challenge-list";
-        elementExists.id = category;
-        let title = document.createElement("h2");
-        title.className = "challenge-category";
-        title.innerHTML = associate.get(category);
-        elementExists.appendChild(title);
-        let separation = document.createElement("hr");
-        separation.className = "separation";
-        elementExists.appendChild(separation);
-        allChallenge = document.createElement("div");
-        allChallenge.className = "horizontal-scroll-wrapper";
-        allChallenge.id = category + "-challenge";
-        elementExists.appendChild(allChallenge);
-    } else {
-        elementExists = all_elements.get(category);
-        allChallenge = all_challenge.get(category + "-challenge");
+    if (selectedCategory.length > 0 && selectedCategory.includes(associate.get(category))) {
+        let elementExists = null;
+        let allChallenge = null;
+        if (all_elements.has(category) === false) {
+            elementExists = document.createElement("div");
+            elementExists.className = "col challenge-list";
+            elementExists.id = category;
+            let title = document.createElement("h2");
+            title.className = "challenge-category";
+            title.innerHTML = associate.get(category);
+            elementExists.appendChild(title);
+            let separation = document.createElement("hr");
+            separation.className = "separation";
+            elementExists.appendChild(separation);
+            allChallenge = document.createElement("div");
+            allChallenge.className = "horizontal-scroll-wrapper";
+            allChallenge.id = category + "-challenge";
+            elementExists.appendChild(allChallenge);
+        } else {
+            elementExists = all_elements.get(category);
+            allChallenge = all_challenge.get(category + "-challenge");
+        }
+        let challenge = document.createElement("div");
+        let challenge_url = document.createElement("a");
+        let challenge_picture = document.createElement("img");
+        if (exist === true) {
+            challenge_picture.className = "challenge-picture";
+            challenge.className = "challenge-preview";
+        } else {
+            challenge_picture.className = "challenge-picture-not";
+            challenge.className = "challenge-preview not";
+        }
+        challenge.id = id.toString();
+        challenge_picture.src = data_challenge[id].thumbnail;
+        challenge_url.href = url;
+        challenge_url.appendChild(challenge_picture);
+        challenge.appendChild(challenge_url);
+        allChallenge.appendChild(challenge);
+        all_elements.set(category, elementExists);
+        all_challenge.set(category + "-challenge", allChallenge);
     }
-    let challenge = document.createElement("div");
-    let challenge_url = document.createElement("a");
-    let challenge_picture = document.createElement("img");
-    if (exist === true) {
-        challenge_picture.className = "challenge-picture";
-        challenge.className = "challenge-preview";
-    } else {
-        challenge_picture.className = "challenge-picture-not";
-        challenge.className = "challenge-preview not";
-    }
-    challenge.id = id.toString();
-    challenge_picture.src = data_challenge[id].thumbnail;
-    challenge_url.href = url;
-    challenge_url.appendChild(challenge_picture);
-    challenge.appendChild(challenge_url);
-    allChallenge.appendChild(challenge);
-    all_elements.set(category, elementExists);
-    all_challenge.set(category + "-challenge", allChallenge);
 }
 
 let possessed_challenge = [];
+
+// duplicate
+function recoverSelectedElement(listName, replaceStr) {
+    let list = [];
+    let listChildren = document.getElementById(listName).children;
+    for (let i = 0; i < listChildren.length; i++) {
+        if (listChildren.item(i).className === "task selected-genre")
+            list.push(listChildren.item(i).id.replace(replaceStr, ''));
+    }
+    return list;
+}
 
 async function get_all_user_comment_thread(userId, page) {
     let query = "query ($page: Int, $userId: Int) {\n" +
@@ -104,12 +158,13 @@ async function get_all_user_comment_thread(userId, page) {
         })
         .then(async data => {
             const checker = document.getElementById("checked-slider");
+            let selectedCategory = recoverSelectedElement('list', 'category-selector-check-');
             for (let i = 0; i < data.data.Page.threadComments.length; i++) {
                 if (!checker.checked && all_challenge_id.includes(data.data.Page.threadComments[i].threadId) === true && possessed_challenge.includes(data.data.Page.threadComments[i].threadId) === false) {
-                    await display_to_it(data.data.Page.threadComments[i].siteUrl, data.data.Page.threadComments[i].threadId, true)
+                    await display_to_it(data.data.Page.threadComments[i].siteUrl, data.data.Page.threadComments[i].threadId, true, selectedCategory)
                     possessed_challenge.push(data.data.Page.threadComments[i].threadId);
                 } else if (checker.checked && all_challenge_manga_id.includes(data.data.Page.threadComments[i].threadId) === true && possessed_challenge.includes(data.data.Page.threadComments[i].threadId) === false) {
-                    await display_to_it(data.data.Page.threadComments[i].siteUrl, data.data.Page.threadComments[i].threadId, true)
+                    await display_to_it(data.data.Page.threadComments[i].siteUrl, data.data.Page.threadComments[i].threadId, true, selectedCategory)
                     possessed_challenge.push(data.data.Page.threadComments[i].threadId);
                 }
             }
@@ -213,9 +268,10 @@ async function get_user_information() {
         ids = all_challenge_manga_id;
     } else
         ids = all_challenge_id;
+    let selectedCategory = recoverSelectedElement('list', 'category-selector-check-');
     for (let i = 0; i < ids.length; i++) {
         if (possessed_challenge.includes(ids[i]) === false) {
-            await display_to_it("https://anilist.co/forum/thread/" + ids[i].toString() , ids[i], false);
+            await display_to_it("https://anilist.co/forum/thread/" + ids[i].toString() , ids[i], false, selectedCategory);
         }
     }
     if (associate.has("completed"))
