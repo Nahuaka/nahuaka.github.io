@@ -1,5 +1,7 @@
 const delay = ms => new Promise(res => setTimeout(res, ms));
 let categoryOpen = false;
+const stateManga = ["Reading", "Plan to read", "Completed", "Rereading", "Paused", "Dropped"];
+const stateAnime = ["Completed", "Watching", "Rewatching", "Planned", "Dropped", "Paused"]
 
 document.querySelector('.select-field').addEventListener('click', () => {
     document.querySelector('#list').classList.toggle('show');
@@ -114,12 +116,20 @@ async function display_to_it(url, id, exist, selectedCategory)
 let possessed_challenge = [];
 
 // duplicate
-function recoverSelectedElement(listName, replaceStr) {
+
+function recoverSelectedElementWithDefault(listName, replaceStr) {
     let list = [];
     let listChildren = document.getElementById(listName).children;
     for (let i = 0; i < listChildren.length; i++) {
         if (listChildren.item(i).className === "task selected-genre")
             list.push(listChildren.item(i).id.replace(replaceStr, ''));
+    }
+    if (list.length === 0) {
+        for (let i = 0; i < listChildren.length; i++) {
+            if (listChildren.item(i).hidden === false) {
+                list.push(listChildren.item(i).id.replace(replaceStr, ''));
+            }
+        }
     }
     return list;
 }
@@ -158,7 +168,7 @@ async function get_all_user_comment_thread(userId, page) {
         })
         .then(async data => {
             const checker = document.getElementById("checked-slider");
-            let selectedCategory = recoverSelectedElement('list', 'category-selector-check-');
+            let selectedCategory = recoverSelectedElementWithDefault('list', 'category-selector-check-');
             for (let i = 0; i < data.data.Page.threadComments.length; i++) {
                 if (!checker.checked && all_challenge_id.includes(data.data.Page.threadComments[i].threadId) === true && possessed_challenge.includes(data.data.Page.threadComments[i].threadId) === false) {
                     await display_to_it(data.data.Page.threadComments[i].siteUrl, data.data.Page.threadComments[i].threadId, true, selectedCategory)
@@ -268,7 +278,7 @@ async function get_user_information() {
         ids = all_challenge_manga_id;
     } else
         ids = all_challenge_id;
-    let selectedCategory = recoverSelectedElement('list', 'category-selector-check-');
+    let selectedCategory = recoverSelectedElementWithDefault('list', 'category-selector-check-');
     for (let i = 0; i < ids.length; i++) {
         if (possessed_challenge.includes(ids[i]) === false) {
             await display_to_it("https://anilist.co/forum/thread/" + ids[i].toString() , ids[i], false, selectedCategory);
