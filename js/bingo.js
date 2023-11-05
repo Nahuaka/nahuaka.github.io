@@ -56,10 +56,12 @@ function search_through(data, comment)
             if (data.hasOwnProperty(url) && !comment_split[i - 2].includes(completed)) {
                 comment_split[i] = "Start: " + data[url].start + " Finish: " + data[url].end + comment_split[i].substring(36);
                 const index = comment_split[i - 2].indexOf('[') + 1;
-                comment_split[i - 2] = comment_split[i - 2].substring(0, index) + completed + comment_split[i - 2].substring(index + 1);
+                const indexEndBraket = comment_split[i - 2].indexOf(']');
+                comment_split[i - 2] = comment_split[i - 2].substring(0, index) + completed + comment_split[i - 2].substring(indexEndBraket);
             } else if (!comment_split[i - 2].includes(completed)) {
                 const index = comment_split[i - 2].indexOf('[') + 1;
-                comment_split[i - 2] = comment_split[i - 2].substring(0, index) + finished + comment_split[i - 2].substring(index + 1);
+                const indexEndBraket = comment_split[i - 2].indexOf(']');
+                comment_split[i - 2] = comment_split[i - 2].substring(0, index) + finished + comment_split[i - 2].substring(indexEndBraket);
             }
         }
     }
